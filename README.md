@@ -1,4 +1,4 @@
-# http-store - Store your `express-session` in a RESTful way
+# restsession - Store your `express-session` in a RESTful way
 
 ## RESTful API Specification (endpoint)
 ### Get list of all Sessions
