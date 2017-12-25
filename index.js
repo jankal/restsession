@@ -20,6 +20,7 @@ module.exports = function (session) {
     }).catch(function (e) {
       if (e.response.status === 401) {
           callback(null, null)
+          return
       }
       callback(e)
     })
