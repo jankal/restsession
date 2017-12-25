@@ -1,4 +1,6 @@
-# restsession - Store your `express-session` in a RESTful way
+# restsession
+[![NPM Version][npm-version-image]][npm-url]
+[![NPM Downloads][npm-downloads-image]][npm-url]
 
 ## Usage in express
 Example:
@@ -113,3 +115,7 @@ Response:
 
 This can also be used in conjuction with the `?ping` URL parameter. Then the API is able to update any existing expire times of the session if any.
 If the session with `{sid}` already exists, the API should update that one.
+
+[npm-version-image]: https://img.shields.io/npm/v/restsession.svg?style=flat-square
+[npm-downloads-image]: https://img.shields.io/npm/dm/restsession.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/restsession
