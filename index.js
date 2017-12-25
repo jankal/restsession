@@ -16,6 +16,7 @@ module.exports = function (session) {
 
   RestStore.prototype.get = function (sid, callback) {
     axios.get(this.endpoint + '/' + sid).then(function (data) {
+      console.log(data)
       callback(null, data)
     }).catch(function (e) {
       if (typeof e.response != 'undefined' && e.response.status === 404) {
