@@ -74,6 +74,7 @@ Response:
   "key": "value"
 }
 ```
+If the session doesn't exists, The API should throw a HTTP 404 Not Found
 
 ### Delete one Session
 ---
@@ -111,3 +112,4 @@ Response:
 ```
 
 This can also be used in conjuction with the `?ping` URL parameter. Then the API is able to update any existing expire times of the session if any.
+If the session with `{sid}` already exists, the API should update that one.
