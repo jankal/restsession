@@ -1,0 +1,15 @@
+{
+  "name": "http-store",
+  "version": "1.0.0",
+  "description": "A session store based on a HTTP session REST api",
+  "main": "index.js",
+  "author": {
+    "name": "Alexander Jank",
+    "email": "himself@alexanderjank.de"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.17.1"
+  },
+  "devDependencies": {}
+}
