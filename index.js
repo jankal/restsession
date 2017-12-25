@@ -18,7 +18,7 @@ module.exports = function (session) {
     axios.get(this.endpoint + '/' + sid).then(function (data) {
       callback(null, data)
     }).catch(function (e) {
-      if (e.response.status === 404) {
+      if (e.response && e.response.status && e.response.status === 404) {
           callback(null, null)
           return
       }
