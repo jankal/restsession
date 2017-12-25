@@ -1,12 +1,20 @@
 import axios from 'axios'
 
-export default class HTTPStore {
+module.exports = function (session) {
+  var Store = session.Store;
 
-  constructor(endpoint) {
-    this.endpoint = endpoint
+  function RestStore (endpoint) {
+    var self = this
+
+    endpoint = endpoint || '127.0.0.1'
+    Store.call(self)
+
+    self.endpoint = endpoint
   }
 
-  get (sid, callback) {
+  RestStore.prototype.__proto__ = Store.prototype
+
+  RestStore.prototype.get = function (sid, callback) {
     axios.get(this.endpoint + '/' + sid).then(function (data) {
       callback(null, data)
     }).catch(function (e) {
@@ -14,7 +22,7 @@ export default class HTTPStore {
     })
   }
 
-  set (sid, data, callback) {
+  RestStore.prototype.set = function (sid, data, callback) {
     axios.post(this.endpoint + '/' + sid, data).then(function () {
       callback()
     }).catch(function (e) {
@@ -22,7 +30,7 @@ export default class HTTPStore {
     })
   }
 
-  destroy (sid, callback) {
+  RestStore.prototype.destroy = function (sid, callback) {
     axios.delete(this.endpoint + '/' + sid).then(function () {
       callback()
     }).catch(function (e) {
@@ -30,7 +38,7 @@ export default class HTTPStore {
     })
   }
 
-  clear (callback) {
+  RestStore.prototype.clear = function (callback) {
     axios.delete(this.endpoint).then(function () {
       callback()
     }).catch(function (e) {
@@ -38,7 +46,7 @@ export default class HTTPStore {
     })
   }
 
-  all (callback) {
+  RestStore.prototype.all = function (callback) {
     axios.get(this.endpoint).then(function (data) {
       callback(null, data)
     }).catch(function (e) {
@@ -46,7 +54,7 @@ export default class HTTPStore {
     })
   }
 
-  touch (sid, data, callback) {
+  RestStore.prototype.touch = function (sid, data, callback) {
     axios.post(this.endpoint + '/' + sid + '?ping', data).then(function () {
       callback()
     }).catch(function (e) {
