@@ -15,8 +15,7 @@ module.exports = function (session) {
   RestStore.prototype.__proto__ = Store.prototype
 
   RestStore.prototype.get = function (sid, callback) {
-    axios.get(this.endpoint + '/' + sid).then(function (data) {
-      console.log(data)
+    axios.get(this.endpoint + '/' + sid).then(function ({data}) {
       callback(null, data)
     }).catch(function (e) {
       if (typeof e.response != 'undefined' && e.response.status === 404) {
@@ -52,7 +51,7 @@ module.exports = function (session) {
   }
 
   RestStore.prototype.all = function (callback) {
-    axios.get(this.endpoint).then(function (data) {
+    axios.get(this.endpoint).then(function ({data}) {
       callback(null, data)
     }).catch(function (e) {
       callback(e)
